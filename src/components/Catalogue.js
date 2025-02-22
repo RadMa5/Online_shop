@@ -2,23 +2,19 @@ import React from "react";
 import fil1 from "./img/fil1.svg";
 import fil2 from "./img/fil2.svg";
 import cart from "./img/cart.svg";
-import feat1 from "./img/feat1.jpg";
-import feat7 from "./img/feat7.jpg";
-import feat3 from "./img/feat3.jpg";
-import feat4 from "./img/feat4.png";
-import feat8 from "./img/feat8.jpg";
-import feat9 from "./img/feat9.jpg";
-import feat10 from "./img/feat10.jpg";
-import feat11 from "./img/feat11.jpg";
-import feat12 from "./img/feat12.jpg";
 import arrowL from "./img/arrowL.svg";
 import arrowR from "./img/arrowR.svg";
 import as1 from "./img/as1.svg";
 import as2 from "./img/as2.svg";
 import as3 from "./img/as3.svg";
+import { useSelector } from "react-redux";
 
 
 export default function Catalogue() {
+    const products = useSelector((state) => state.Items);
+    const first9Products = products.filter((value) => {
+        return value.id < 10;
+    });
     return (
         <div>
             <div className="container crumbs">
@@ -63,106 +59,19 @@ export default function Catalogue() {
                         </form>
                     </div>
                     <div className="catContent">
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat1} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
+                        {first9Products.map(product => (
+                                <div className="featIt" key={product.id}>
+                                    <div className="cartIt">
+                                        <img className="carImg" src={product.img} alt=""></img>
+                                        <div className="cartD">
+                                            <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
+                                        </div>
+                                    </div>
+                                <h4>{product.title}</h4>
+                                <h6>{product.desc}</h6>
+                                <h5>{product.price}</h5>
                             </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat7} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
-                            </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat3} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
-                            </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat4} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
-                            </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat8} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
-                            </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat9} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
-                            </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat10} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
-                            </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat11} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
-                            </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-                        <div className="featIt">
-                            <div className="cartIt">
-                                <img className="carImg" src={feat12} alt=""></img>
-                                <div className="cartD">
-                                    <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                                </div>
-                            </div>
-                            <h4>ELLERY X M'O CAPSULE</h4>
-                            <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                            <h5>$52.00</h5>
-                        </div>
-
+                        ))}
                     </div>
                     <div className="catPager">
                         <img src={arrowL} alt=""></img>

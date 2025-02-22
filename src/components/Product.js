@@ -4,12 +4,14 @@ import wind2 from "./img/wind2.svg";
 import windpng from "./img/wind.png";
 import fil2 from "./img/fil2.svg";
 import cart2 from "./img/cart2.svg";
-import feat4 from "./img/feat4.png";
 import cart from "./img/cart.svg";
-import feat3 from "./img/feat3.jpg";
-import feat6 from "./img/feat6.png";
+import { useSelector } from "react-redux";
 
 export default function Product() {
+    const products = useSelector((state) => state.Items);
+    const first3Products = products.filter((value) => {
+        return value.id < 4;
+    });
     return (
         <div>
             <div className="container crumbs">
@@ -48,39 +50,19 @@ export default function Product() {
                 </div>
             </div>
             <div className="container catContent prodContent">
-                <div className="featIt">
-                    <div className="cartIt">
-                        <img className="carImg" src={feat4} alt=""></img>
-                        <div className="cartD">
-                            <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
+            {first3Products.map(product => (
+                            <div className="featIt" key={product.id}>
+                                <div className="cartIt">
+                                    <img className="carImg" src={product.img} alt=""></img>
+                                    <div className="cartD">
+                                        <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
+                                    </div>
+                                </div>
+                            <h4>{product.title}</h4>
+                            <h6>{product.desc}</h6>
+                            <h5>{product.price}</h5>
                         </div>
-                    </div>
-                    <h4>ELLERY X M'O CAPSULE</h4>
-                    <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                    <h5>$52.00</h5>
-                </div>
-                <div className="featIt">
-                    <div className="cartIt">
-                        <img className="carImg" src={feat3} alt=""></img>
-                        <div className="cartD">
-                            <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                        </div>
-                    </div>
-                    <h4>ELLERY X M'O CAPSULE</h4>
-                    <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                    <h5>$52.00</h5>
-                </div>
-                <div className="featIt">
-                    <div className="cartIt">
-                        <img className="carImg" src={feat6} alt=""></img>
-                        <div className="cartD">
-                            <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
-                        </div>
-                    </div>
-                    <h4>ELLERY X M'O CAPSULE</h4>
-                    <h6>Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</h6>
-                    <h5>$52.00</h5>
-                </div>
+                    ))}
             </div>
         </div>
     );

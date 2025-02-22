@@ -6,8 +6,11 @@ import he3 from "./img/he3.svg";
 import he4 from "./img/he4.svg";
 import he5 from "./img/he5.svg";
 import brand from "./img/brand.png";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+    const dump = useSelector((state) => state.Items);
+    console.log(dump);
     return (
         <div>
             <header className="top">
