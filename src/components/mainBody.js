@@ -4,13 +4,16 @@ import cart from "./img/cart.svg";
 import as1 from "./img/as1.svg";
 import as2 from "./img/as2.svg";
 import as3 from "./img/as3.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../app/components/CartReducer";
 
 export default function MainBody() {
     const products = useSelector((state) => state.Items);
     const first6Products = products.filter((value) => {
         return value.id < 7;
     });
+    const dispatch = useDispatch();
+
     return (
         <div>
             <div className="brand">
@@ -66,7 +69,9 @@ export default function MainBody() {
                                 <div className="cartIt">
                                     <img className="carImg" src={product.img} alt=""></img>
                                     <div className="cartD">
-                                        <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
+                                        <button className="cartB" onClick={() => {
+                                            dispatch(add(product));
+                                        }}><img src={cart} alt=""></img>Add to Cart</button>
                                     </div>
                                 </div>
                             <h4>{product.title}</h4>

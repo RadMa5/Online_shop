@@ -5,24 +5,21 @@ import he2 from "./img/he2.svg";
 import he3 from "./img/he3.svg";
 import he4 from "./img/he4.svg";
 import he5 from "./img/he5.svg";
-import brand from "./img/brand.png";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-    const dump = useSelector((state) => state.Items);
-    console.log(dump);
     return (
         <div>
             <header className="top">
                 <nav className="container header">
                     <div className="headerL">
-                        <a href="/"><img src={he1} alt=""></img></a>
+                        <Link to="/"><img src={he1} alt=""></img></Link>
                         <button><img src={he2} alt=""></img></button>
                     </div>
                     <div className="headerR">
                         <button className="burg"><img src={he3} alt=""></img></button>
-                        <a href="/registration"><img src={he4} alt=""></img></a>
-                        <a href="/cart"><img src={he5} alt=""></img></a>
+                        <Link to="/registration"><img src={he4} alt=""></img></Link>
+                        <Link to="/cart"><img src={he5} alLt=""></img></Link>
                     </div>
                 </nav>
 

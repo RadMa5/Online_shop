@@ -304,9 +304,15 @@ h2 {
     transition: ease-out;
     transition-duration: 0.3s;
 }
+.itemBox {
+    display: flex;
+    flex-direction: column;
+    grid-row: 1 / span 2;
+}
 
 .cartIt {
     position: relative;
+    margin-bottom: 40px;
 }
 
 .browseAll {
@@ -837,6 +843,9 @@ h5 {
     padding-right: 22px;
 }
 
+.cartShipp {
+    margin-bottom: 40px;
+}
 .sCart .cartShipp {
     display: flex;
     flex-direction: column;
@@ -873,6 +882,10 @@ h5 {
     line-height: 13.2px;
     text-align: left;
     cursor: pointer;
+}
+
+.cartCheckout {
+    grid-column-start: 2;
 }
 
 .sCart .cartCheckout {

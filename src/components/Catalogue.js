@@ -7,7 +7,8 @@ import arrowR from "./img/arrowR.svg";
 import as1 from "./img/as1.svg";
 import as2 from "./img/as2.svg";
 import as3 from "./img/as3.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../app/components/CartReducer";
 
 
 export default function Catalogue() {
@@ -15,6 +16,9 @@ export default function Catalogue() {
     const first9Products = products.filter((value) => {
         return value.id < 10;
     });
+    const dispatch = useDispatch();
+    const cartSelect = useSelector((state) => state.Cart);
+        console.log(cartSelect);
     return (
         <div>
             <div className="container crumbs">
@@ -49,13 +53,13 @@ export default function Catalogue() {
                         </div>
                         <form className="size sizeH">
                             <input type="checkbox" name="XS" value="XS"></input>
-                            <label for="XS">XS</label><br></br>
+                            <label name="XS">XS</label><br></br>
                             <input type="checkbox" name="S" value="S"></input>
-                            <label for="S">S</label><br></br>
+                            <label name="S">S</label><br></br>
                             <input type="checkbox" name="M" value="M"></input>
-                            <label for="M">M</label><br></br>
+                            <label name="M">M</label><br></br>
                             <input type="checkbox" name="L" value="L"></input>
-                            <label for="L">L</label>
+                            <label name="L">L</label>
                         </form>
                     </div>
                     <div className="catContent">
@@ -64,7 +68,9 @@ export default function Catalogue() {
                                     <div className="cartIt">
                                         <img className="carImg" src={product.img} alt=""></img>
                                         <div className="cartD">
-                                            <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
+                                            <button className="cartB" onClick={() => {
+                                                dispatch(add(product));
+                                            }}><img src={cart} alt=""></img>Add to Cart</button>
                                         </div>
                                     </div>
                                 <h4>{product.title}</h4>

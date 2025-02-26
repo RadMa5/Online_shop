@@ -13,7 +13,6 @@ import Registration from './components/Registration';
 import Cart from './components/Cart';
 import Product from './components/Product';
 import { Provider } from 'react-redux';
-import ItemReducer from './app/store';
 import store from './app/store';
 
 

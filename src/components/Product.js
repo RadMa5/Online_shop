@@ -5,13 +5,18 @@ import windpng from "./img/wind.png";
 import fil2 from "./img/fil2.svg";
 import cart2 from "./img/cart2.svg";
 import cart from "./img/cart.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { add } from "../app/components/CartReducer";
 
 export default function Product() {
     const products = useSelector((state) => state.Items);
     const first3Products = products.filter((value) => {
         return value.id < 4;
     });
+    const cartSelect = useSelector((state) => state.Cart);
+        console.log(cartSelect);
+    const dispatch = useDispatch();
     return (
         <div>
             <div className="container crumbs">
@@ -55,7 +60,9 @@ export default function Product() {
                                 <div className="cartIt">
                                     <img className="carImg" src={product.img} alt=""></img>
                                     <div className="cartD">
-                                        <button className="cartB"><img src={cart} alt=""></img>Add to Cart</button>
+                                        <button className="cartB" onClick={() => {
+                                            dispatch(add(product));
+                                        }}><img src={cart} alt=""></img>Add to Cart</button>
                                     </div>
                                 </div>
                             <h4>{product.title}</h4>
