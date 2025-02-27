@@ -14,8 +14,6 @@ export default function Product() {
     const first3Products = products.filter((value) => {
         return value.id < 4;
     });
-    const cartSelect = useSelector((state) => state.Cart);
-        console.log(cartSelect);
     const dispatch = useDispatch();
     return (
         <div>
@@ -67,7 +65,7 @@ export default function Product() {
                                 </div>
                             <h4>{product.title}</h4>
                             <h6>{product.desc}</h6>
-                            <h5>{product.price}</h5>
+                            <h5>${product.price}</h5>
                         </div>
                     ))}
             </div>

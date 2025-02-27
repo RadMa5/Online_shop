@@ -12,10 +12,25 @@ import feat8 from "./img/feat8.jpg";
 import feat9 from "./img/feat9.jpg";
 import feat10 from "./img/feat10.jpg";
 import feat11 from "./img/feat11.jpg";
+import { remove, removeAll, changeAmount } from "../app/components/CartReducer";
+import { Link } from "react-router-dom";
+
+function totalPrice(array) {
+    let total = 0;
+    for (let i = 0; i < array.length; i ++) {
+        let amount = array[i].amount;
+        while (amount >= 1){
+            total += array[i].price;
+            amount --;
+        }  
+    }
+    return total;
+}
 
 export default function Cart() {
     const cart = useSelector((state) => state.Cart);
     const dispatch = useDispatch();
+    let priceTotal = totalPrice(cart);
     return (
         <div>
             <div className="container crumbs">
@@ -25,23 +40,6 @@ export default function Cart() {
             </div>
             <div className="container sCart">
                 <div className="itemBox">
-                    {/* <div className="cartIt">
-                        <div className="cartItImg">
-                            <img src={img3} alt=""></img>
-                        </div>
-                        <div className="cartItText">
-                            <h1>MANGO PEOPLE T-SHIRT</h1>
-                            <h3>Price: <span className="cartItPrice">$300</span></h3>
-                            <h3>Color: Red</h3>
-                            <h3>Size: Xl</h3>
-                            <div style={{textWrap: 'nowrap'}}>
-                                <h3>Quantity: <input type="number" value="1"></input></h3>
-                            </div>
-                        </div>
-                        <div className="cartCross">
-                            <button className="cartCross"><img src={cross} alt=""></img></button>
-                        </div>
-                    </div> */}
                     {cart.map(product => (
                         <div className="cartIt" key={product.id}>
                             <div className="cartItImg">
@@ -49,18 +47,21 @@ export default function Cart() {
                             </div>
                             <div className="cartItText">
                                 <h1>{product.name}</h1>
-                                <h3>Price: <span className="cartItPrice">{product.price}</span></h3>
-                                <h3>Color: Red</h3>
-                                <h3>Size: Xl</h3>
+                                <h3>Price: $<span className="cartItPrice">{product.price}</span></h3>
+                                <h3>Size: {product.size}</h3>
                                 <div style={{textWrap: 'nowrap'}}>
-                                    <h3>Quantity: <input type="number" value="1"></input></h3>
+                                    <h3>Quantity: <input type="number" defaultValue={1} onChange={(e) => {dispatch(changeAmount({id: product.id, amount: e.currentTarget.value}))}}></input></h3>
                                 </div>
                             </div>
                             <div className="cartCross">
-                                <button className="cartCross"><img src={cross} alt=""></img></button>
+                                <button className="cartCross" onClick={() => {dispatch(remove(product.id))}}><img src={cross} alt=""></img></button>
                             </div>
                         </div>
                     ))}
+                    <div className="cartNav">
+                        <button className="cartNav1" onClick={() => {dispatch(removeAll())}}>CLEAR SHOPPING CART</button>
+                        <button className="cartNav2"><Link to={'/catalog'}>CONTINUE SHOPPING</Link></button>
+                    </div>
                 </div>
                 <div className="itemBox">
                     <div className="cartShipp">
@@ -73,8 +74,8 @@ export default function Cart() {
                     
                     <div className="cartCheckout">
                         <div className="checkoutText">
-                            <h6>SUB TOTAL <span style={{marginLeft: '20 px'}}>$900</span></h6>
-                            <p>GRAND TOTAL <span className="checkoutPrice">$900</span></p>
+                            <h6>SUB TOTAL $<span style={{marginLeft: '20 px'}}>{priceTotal}</span></h6>
+                            <p>GRAND TOTAL <span className="checkoutPrice">${priceTotal}</span></p>
                             <div className="checkoutDiv">
                                 <button>PROCEED TO CHECKOUT</button>
                             </div>

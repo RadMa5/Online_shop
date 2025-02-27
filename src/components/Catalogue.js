@@ -17,8 +17,6 @@ export default function Catalogue() {
         return value.id < 10;
     });
     const dispatch = useDispatch();
-    const cartSelect = useSelector((state) => state.Cart);
-        console.log(cartSelect);
     return (
         <div>
             <div className="container crumbs">
@@ -75,7 +73,7 @@ export default function Catalogue() {
                                     </div>
                                 <h4>{product.title}</h4>
                                 <h6>{product.desc}</h6>
-                                <h5>{product.price}</h5>
+                                <h5>${product.price}</h5>
                             </div>
                         ))}
                     </div>

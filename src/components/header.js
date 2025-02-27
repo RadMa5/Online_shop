@@ -19,7 +19,7 @@ export default function Header() {
                     <div className="headerR">
                         <button className="burg"><img src={he3} alt=""></img></button>
                         <Link to="/registration"><img src={he4} alt=""></img></Link>
-                        <Link to="/cart"><img src={he5} alLt=""></img></Link>
+                        <Link to="/cart"><img src={he5} alt=""></img></Link>
                     </div>
                 </nav>
 

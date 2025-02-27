@@ -76,7 +76,7 @@ export default function MainBody() {
                                 </div>
                             <h4>{product.title}</h4>
                             <h6>{product.desc}</h6>
-                            <h5>{product.price}</h5>
+                            <h5>${product.price}</h5>
                         </div>
                     ))}
                 </div>
