@@ -11,6 +11,7 @@ import feat9 from "../components/img/feat9.jpg";
 import feat10 from "../components/img/feat10.jpg";
 import feat11 from "../components/img/feat11.jpg";
 import feat12 from "../components/img/feat12.jpg";
+import windpng from "../components/img/wind.png";
 import { createSlice } from "@reduxjs/toolkit";
 
 const shopItems = [{id: 1, title: "ELLERY X M'O CAPSULE", desc: "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.", price: 52.0, img: feat1, size: 'M'}, 
@@ -24,7 +25,8 @@ const shopItems = [{id: 1, title: "ELLERY X M'O CAPSULE", desc: "Known for her s
     {id: 9, title: "ELLERY X M'O CAPSULE", desc: "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.", price: 52.0, img: feat9, size: 'L'}, 
     {id: 10, title: "ELLERY X M'O CAPSULE", desc: "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.", price: 52.0, img: feat10, size: 'M'}, 
     {id: 11, title: "ELLERY X M'O CAPSULE", desc: "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.", price: 52.0, img: feat11, size: 'XL'}, 
-    {id: 12, title: "ELLERY X M'O CAPSULE", desc: "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.", price: 52.0, img: feat12, size: 'XL'}
+    {id: 12, title: "ELLERY X M'O CAPSULE", desc: "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.", price: 52.0, img: feat12, size: 'XL'},
+    {id: 13, title: "MOSCHINO CHEAP AND CHIC", desc: "Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.", price: 561.0, img: windpng, size: 'M'}
 ];
 
 export const ItemReducer = createSlice({

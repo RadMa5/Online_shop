@@ -6,8 +6,15 @@ import fil2 from "./img/fil2.svg";
 import cart2 from "./img/cart2.svg";
 import cart from "./img/cart.svg";
 import ItemList from "./ItemList";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { add } from "../app/components/CartReducer";
 
 export default function Product() {
+    const products = useSelector((state) => state.Items);
+    const showcase = products[12];
+    console.log(showcase);
+    const dispatch = useDispatch();
     return (
         <div>
             <div className="container crumbs">
@@ -28,11 +35,9 @@ export default function Product() {
                     <div className="description">
                         <div className="descriptUp">
                             <div className="dividerUp">WOMEN COLLECTION</div>
-                            <h2>MOSCHINO CHEAP AND CHIC</h2>
-                            <h3>Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional
-                                portals.
-                            </h3>
-                            <h1>$561</h1>
+                            <h2>{showcase.title}</h2>
+                            <h3>{showcase.desc}</h3>
+                            <h1>${showcase.price}</h1>
                         </div>
                         <div className="descriptDown">
                             <div className="dFilters">
@@ -40,7 +45,7 @@ export default function Product() {
                                 <button className="descriptFilt">CHOOSE SIZE <img src={fil2} alt=""></img></button>
                                 <button className="descriptFilt">QUANTITY <img src={fil2} alt=""></img></button>
                             </div>
-                            <button className="browseAllB"><img src={cart2} alt=""></img> Add to Cart</button>
+                            <button className="browseAllB" onClick={() => {dispatch(add(showcase))}}><img src={cart2} alt=""></img> Add to Cart</button>
                         </div>
                     </div>
                 </div>
