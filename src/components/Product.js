@@ -5,16 +5,9 @@ import windpng from "./img/wind.png";
 import fil2 from "./img/fil2.svg";
 import cart2 from "./img/cart2.svg";
 import cart from "./img/cart.svg";
-import { useDispatch, useSelector } from "react-redux";
-
-import { add } from "../app/components/CartReducer";
+import ItemList from "./ItemList";
 
 export default function Product() {
-    const products = useSelector((state) => state.Items);
-    const first3Products = products.filter((value) => {
-        return value.id < 4;
-    });
-    const dispatch = useDispatch();
     return (
         <div>
             <div className="container crumbs">
@@ -52,23 +45,7 @@ export default function Product() {
                     </div>
                 </div>
             </div>
-            <div className="container catContent prodContent">
-            {first3Products.map(product => (
-                            <div className="featIt" key={product.id}>
-                                <div className="cartIt">
-                                    <img className="carImg" src={product.img} alt=""></img>
-                                    <div className="cartD">
-                                        <button className="cartB" onClick={() => {
-                                            dispatch(add(product));
-                                        }}><img src={cart} alt=""></img>Add to Cart</button>
-                                    </div>
-                                </div>
-                            <h4>{product.title}</h4>
-                            <h6>{product.desc}</h6>
-                            <h5>${product.price}</h5>
-                        </div>
-                    ))}
-            </div>
+            <ItemList amount={3} classStr={{className: "container catContent prodContent"}} />
         </div>
     );
 }

@@ -1,19 +1,11 @@
 import React from "react";
 import brand from "./img/brand.png";
-import cart from "./img/cart.svg";
 import as1 from "./img/as1.svg";
 import as2 from "./img/as2.svg";
 import as3 from "./img/as3.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { add } from "../app/components/CartReducer";
+import ItemList from "./ItemList";
 
 export default function MainBody() {
-    const products = useSelector((state) => state.Items);
-    const first6Products = products.filter((value) => {
-        return value.id < 7;
-    });
-    const dispatch = useDispatch();
-
     return (
         <div>
             <div className="brand">
@@ -63,23 +55,7 @@ export default function MainBody() {
                     <h1>Fetured Items</h1>
                     <h3>Shop for items based on what we featured in this week</h3>
                 </div>
-                <div className="container featItems">
-                    {first6Products.map(product => (
-                            <div className="featIt" key={product.id}>
-                                <div className="cartIt">
-                                    <img className="carImg" src={product.img} alt=""></img>
-                                    <div className="cartD">
-                                        <button className="cartB" onClick={() => {
-                                            dispatch(add(product));
-                                        }}><img src={cart} alt=""></img>Add to Cart</button>
-                                    </div>
-                                </div>
-                            <h4>{product.title}</h4>
-                            <h6>{product.desc}</h6>
-                            <h5>${product.price}</h5>
-                        </div>
-                    ))}
-                </div>
+                    <ItemList amount={6} classStr={{className: "container featItems"}}/>
                 <div className="container browseAll">
                     <a href="./catalog" className="browseAllB">Browse All Product</a>
                 </div>

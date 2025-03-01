@@ -30,7 +30,17 @@ const shopItems = [{id: 1, title: "ELLERY X M'O CAPSULE", desc: "Known for her s
 export const ItemReducer = createSlice({
     name: 'Items',
     initialState: shopItems,
-    reducers: {}
+    reducers: {
+        sizeFilter: (state, action) => {
+            const sizes = action.payload;
+            
+            const newArr = shopItems.filter(value => 
+                sizes.includes(value.size)
+            );
+            return newArr;
+        }
+    }
 });
 
+export const { sizeFilter } = ItemReducer.actions;
 export default ItemReducer.reducer;
