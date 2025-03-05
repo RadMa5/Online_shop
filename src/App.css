@@ -1072,6 +1072,84 @@ h5 {
     list-style-position: inside;
 }
 
+.productDetails {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+}
+
+.productDetailsL {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productDetailsPurchase {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productDetailsPurchase h4 {
+    margin-right: 15px;
+}
+
+.ProductDetailsBuy {
+    margin-bottom: 0px;
+}
+
+.productDetailsR {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+}
+
+.productDetailsCommentary {
+    grid-column: 1 / span 2;
+}
+
+.productDetailsForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.productDetailsForm h2 {
+    margin-bottom: 10px;
+}
+
+.productDetailsForm textarea {
+    margin-bottom: 20px;
+    width: 70vw;
+    height: 50vh;
+}
+
+.productDetailsAllReviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productDetailsAllReviews h3 {
+    border: solid;
+    border-color: grey;
+    border-width: 1px;
+    margin-bottom: 10px;
+    width: 70vw;
+    padding: 10px;
+}
+
+.productDetailsAllReviews h2 {
+    margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
     .browseAll button {
         margin-bottom: 64px;

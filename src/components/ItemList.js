@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import cart from "./img/cart.svg";
 import { add } from "../app/components/CartReducer";
+import { Link } from "react-router";
 
 export default function ItemList({amount, classStr}) {
     const products = useSelector((state) => state.Items);
@@ -25,7 +26,7 @@ export default function ItemList({amount, classStr}) {
                                 }}><img src={cart} alt=""></img>Add to Cart</button>
                             </div>
                         </div>
-                    <h4>{product.title}</h4>
+                    <h4><Link to={`/catalog/${product.id}`}>{product.title}</Link></h4>
                     <h6>{product.desc}</h6>
                     <h5>${product.price}</h5>
                 </div>

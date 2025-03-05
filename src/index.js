@@ -14,23 +14,23 @@ import Cart from './components/Cart';
 import Product from './components/Product';
 import { Provider } from 'react-redux';
 import store from './app/store';
+import ProductDetails from './components/ProductDetails';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store} >
     <Router>
-    <React.StrictMode>
       <Header />
       <Routes>
         <Route path='/' element={<MainBody />} />
         <Route path='/catalog' element={<Catalogue />} />
+        <Route path='/catalog/:id' element={<ProductDetails />} />
         <Route path='/registration' element={<Registration />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/product' element={<Product />} />
       </Routes>
       <Footer />
-    </React.StrictMode>
     </Router>
   </Provider>
 );
